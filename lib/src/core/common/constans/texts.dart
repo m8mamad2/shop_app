@@ -1,11 +1,11 @@
 //! backend api
 const String kBackendUri = 'https://cloud.appwrite.io/v1';
-const String kBackendKey = '64878e239487cbea54f6';
+const String kBackendKey = '';
 
-const String kBackendBucketId = '64878fb8e34f3e6a4993';
+const String kBackendBucketId = '';
 
-const String kBackendDatabaseId = '64878eb9cc300d488554';
-const String kBackendCollectionId ='64878ec41e920a175029';
+const String kBackendDatabaseId = '';
+const String kBackendCollectionId ='';
 
 
 
