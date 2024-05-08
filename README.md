@@ -13,24 +13,33 @@
 - Multi language(English,Persian)
 - Edit Profile
 
-⚡ Quick start
-### step1:
 
-Download or clone this repo by using the link below:
+## ⚡ Quick start
 
-`https://github.com/zubairehman/flutter-boilerplate-project.git`
+Clone the project
 
-#### Step 2:
+```bash
+  https://github.com/M8mamad2/shop_app.git
+```
 
-Go to project root and execute the following command in console to get the dependencies:
+Go to the project directory
 
-`flutter pub get `
+```bash
+  cd shop_app
+```
 
-#### Step 3:
+Install dependencies
 
-run project:
+```bash
+  flutter pub get
+```
 
-`flutter run `
+Run App
+
+```bash
+  flutter run
+```
+
 
 
 
