@@ -42,7 +42,7 @@ Run App
 
 ## 🔽 Download
 
-[Downlaod APK File](https://linktodocumentation)
+[Downlaod APK File]([https://linktodocumentation](https://drive.google.com/file/d/1S9fW-_zYQ5Tz5MlzoX3qs3R2LyNmh2Lj/view?usp=sharing))
 
 
 
