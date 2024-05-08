@@ -40,6 +40,11 @@ Run App
   flutter run
 ```
 
+## 🔽 Download
+
+[Downlaod APK File](https://linktodocumentation)
+
+
 
 
 
