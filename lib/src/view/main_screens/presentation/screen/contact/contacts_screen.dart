@@ -104,9 +104,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
                               width: sizeW(context) * 0.9,
                               height: sizeH(context) * 0.06,
                               child: TypeAheadField<String>(
-                                noItemsFoundBuilder: (context) => Text('sorry... not Found!',style: theme(context).textTheme.titleMedium,),
+                                // noItemsFoundBuilder: (context) => Text('sorry... not Found!',style: theme(context).textTheme.titleMedium,),
                                 loadingBuilder: (context) => loading(context),
-                                textFieldConfiguration: TextFieldConfiguration(
+                                builder:(context, controller, focusNode) =>  TextField(
                                     controller: controller,
                                     style: theme(context).textTheme.titleMedium,
                                     decoration: InputDecoration(
@@ -132,13 +132,13 @@ class _ContactsScreenState extends State<ContactsScreen> {
                                     ),
                                   );
                                 },
-                                onSuggestionSelected: (suggestion) {
+                                onSelected: (suggestion) {
                                   controller.text = suggestion;
                                   ContactDBEntity data = list!.firstWhere((element) => element.name == suggestion);
                                   context.navigation(context,ContactsDetails(data: data,) );
                                   
                                 },
-                                suggestionsBoxDecoration:SuggestionsBoxDecoration(borderRadius: BorderRadius.circular(25)),
+                                // suggestionsBoxDecoration:SuggestionsBoxDecoration(borderRadius: BorderRadius.circular(25)),
                               )),
                   ),
                   sizeBoxH(sizeH(context)*0.02),
@@ -163,7 +163,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
           shape:const CircleBorder(),
           minimumSize: Size(sizeW(context)*0.15, sizeH(context)*0.08)
         ),
-        child:const Icon(Icons.add),
+        child: Icon(Icons.add,color: Theme.of(context).canvasColor,),
         ),
     );
   }

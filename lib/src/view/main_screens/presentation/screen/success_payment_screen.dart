@@ -22,6 +22,7 @@ class SuccessPaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:theme(context).canvasColor,
       appBar: AppBar(
         toolbarHeight: sizeH(context)*0.1,
         elevation: 0,
@@ -36,8 +37,8 @@ class SuccessPaymentScreen extends StatelessWidget {
             sizeBoxH(sizeH(context)*0.04,),
             Text('The purchase was successful'.tr(),
             textAlign: TextAlign.center,
-            style: theme(context).textTheme.headlineLarge!.copyWith(
-              fontSize: sizeW(context)*0.05,color: theme(context).focusColor),),
+              style: theme(context).textTheme.headlineLarge!.copyWith(
+                fontSize: sizeW(context)*0.05,color: theme(context).focusColor),),
             SizedBox(
               height: sizeH(context)*0.3,
               width: sizeW(context),
@@ -52,6 +53,7 @@ class SuccessPaymentScreen extends StatelessWidget {
                   context.read<ProductsBloc>().add(ApiCallProductsEvent(endPoint: 'products'));
                   },
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   minimumSize: Size(sizeW(context)*0.7, sizeH(context)*0.07)
                 ),

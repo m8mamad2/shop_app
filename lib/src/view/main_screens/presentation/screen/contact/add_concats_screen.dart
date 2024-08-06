@@ -63,22 +63,23 @@ class _AddContactScreenState extends State<AddContactScreen> {
                   child: Stack(
                     children: [
                       file != null 
-                      ? CircleAvatar(
-                        backgroundColor: theme(context).dialogBackgroundColor,
-                        backgroundImage: FileImage(File(file!.path)),
-                        radius: sizeW(context)*0.15,)
-                      : CircleAvatar(
-                        backgroundColor: theme(context).dialogBackgroundColor,
-                        radius: sizeW(context)*0.15,
-                        child: const Icon(Icons.question_mark),),
+                        ? CircleAvatar(
+                          backgroundColor: theme(context).dialogBackgroundColor,
+                          backgroundImage: FileImage(File(file!.path)),
+                          radius: sizeW(context)*0.15,)
+                        : CircleAvatar(
+                          backgroundColor: theme(context).dialogBackgroundColor,
+                          radius: sizeW(context)*0.15,
+                          child: const Icon(Icons.question_mark),),
           
                       Align(
                         alignment: Alignment.bottomRight,
                         child: CircleAvatar(
                           radius: sizeW(context)*0.04,
+                          backgroundColor: Theme.of(context).primaryColor,
                           child: FittedBox(
                             child: IconButton(
-                              icon:const Icon(Icons.edit),
+                              icon:Icon(Icons.edit,color: Theme.of(context).canvasColor,),
                               onPressed: ()async{
                                 showModalBottomSheet(
                                   shape:const RoundedRectangleBorder(borderRadius: BorderRadius.only(
@@ -161,7 +162,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                         backgroundColor: theme(context).primaryColor,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                       ),
-                      child: Text('Create'.tr())),
+                      child: Text('Create'.tr(),style: TextStyle(color: Theme.of(context).canvasColor),)),
                   ),
                 )
               ],

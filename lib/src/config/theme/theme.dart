@@ -18,10 +18,11 @@ class AppTheme {
       dialogBackgroundColor: kLightBackgroundImage,
       
       primaryColor: kLightDarkBlueColor,
-      accentColor: kLightPaleBlueColor,
+      hintColor: kLightPaleBlueColor,
       //!
       appBarTheme: lightAppBarTheme,
-      textTheme: lightTextTheme);
+      textTheme: lightTextTheme,
+      textSelectionTheme:const TextSelectionThemeData( cursorColor: kLightDarkBlueColor),);
 
   static final ThemeData darkTheme = ThemeData(
 
@@ -32,10 +33,11 @@ class AppTheme {
     dialogBackgroundColor: kDarkBackgroundImage,
 
     primaryColor: kLightDarkBlueColor,
-    accentColor: kLightPaleBlueColor,
+    hintColor: kLightPaleBlueColor,
 
     appBarTheme: darkAppBarTheme,
-    textTheme: darkTextTheme
+    textTheme: darkTextTheme,
+    textSelectionTheme:const TextSelectionThemeData( cursorColor: kLightDarkBlueColor),
   );
 
   static const AppBarTheme lightAppBarTheme = AppBarTheme(iconTheme: IconThemeData(color: kLightDarkBlueColor));
@@ -54,6 +56,5 @@ class AppTheme {
     titleSmall: TextStyle(fontFamily: 'body'),
     bodyLarge: TextStyle(fontFamily: 'body'),
     bodySmall: TextStyle(fontFamily: 'body'),
-
   );
 }

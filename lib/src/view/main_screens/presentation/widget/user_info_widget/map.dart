@@ -2,11 +2,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:geocode/geocode.dart' as Gcoder;
 import 'package:project3/src/core/common/constans/size.dart';
-import 'package:project3/src/view/main_screens/presentation/blocs/backend_db_bloc/backend_db_bloc.dart';
 
 import '../../../../../config/theme/theme.dart';
 
@@ -17,7 +15,7 @@ class MapWidget extends StatefulWidget {
   State<MapWidget> createState() => _MapWidgetState();
 }
 class _MapWidgetState extends State<MapWidget> {
-  PickerMapController controller = PickerMapController(initMapWithUserPosition: true);
+  PickerMapController controller = PickerMapController(initMapWithUserPosition: const UserTrackingOption(unFollowUser: true,enableTracking: true));
   bool loading =false;
 
   @override
@@ -49,7 +47,7 @@ class _MapWidgetState extends State<MapWidget> {
           )
           ),
       pickerConfig: CustomPickerLocationConfig(
-      initZoom: 15,
+      // initZoom: 15,
       advancedMarkerPicker: MarkerIcon(
         // iconWidget: Container(color: Colors.amber,width: 10,height: 10,),
         icon: Icon(Icons.location_on_rounded,size: sizeW(context)*0.2,color: theme(context).primaryColor,),

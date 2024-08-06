@@ -1,11 +1,11 @@
 
 // }
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_credit_card/credit_card_brand.dart';
-import 'package:flutter_credit_card/credit_card_widget.dart';
-import 'package:flutter_credit_card/glassmorphism_config.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:project3/src/config/localization/is_english.dart';
 import 'package:project3/src/config/theme/cubit_changer/theme_cubit.dart';
@@ -120,7 +120,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                     : LoadingDialogs.hide(context);
                               },
                               builder: (context, state) {
-                              print('checkout ++++++++++ $state');
                               if (state is LoadingBackendDBState)return loading(context);
                               if (state is SuccessBackendDBState) {
                                   Map<String,dynamic> data = state.userInfoData;
@@ -293,7 +292,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                                               GestureDetector(
                                                                 onDoubleTap: () => context.read<PaymentCardBloc>().add(DeleteFromPaymenctCardEvent(index)),
                                                                 child: CreditCardWidget(
-                                                                  textStyle: theme(context).textTheme.headlineLarge!.copyWith(color: theme(context).backgroundColor,fontSize: 18,),
+                                                                  textStyle: theme(context).textTheme.headlineLarge!.copyWith(color: theme(context).backgroundColor,fontSize: 15,),
                                                                   glassmorphismConfig: Glassmorphism(
                                                                     blurX: 0.0,
                                                                     blurY: 0.0,
@@ -307,8 +306,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                                                       end: const Alignment(1, 4),
                                                                     ),
                                                                   ),
-                                                                  height: sizeH(context) * 0.3,
-                                                                  width: sizeW(context)*0.75,
+                                                                  height: sizeH(context) * 0.32,
+                                                                  width: sizeW(context)*0.79,
                                                                   chipColor: theme(context).primaryColorDark,
                                                                   cardNumber: data[index].number ?? '0000000000000000',
                                                                   expiryDate: data[index].date ?? '0000',
@@ -425,7 +424,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                                         sizeH(context) * 0.06,
                                                       ),
                                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                                  child: const Icon(Icons.add),
+                                                  child: Icon(Icons.add, color: Theme.of(context).canvasColor,),
                                                 ),
                                                 sizeBoxW(8),
                                                 Container(
@@ -468,14 +467,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                       builder: (context, state) {
                                         if(state is LoadingPaymentCardState)null;
                                         if(state is SuccessPaymentCardState){
-                                        
                                         return CheckoutContinueButton(
                                           total: widget.total,
                                           onpress: () {
+                                            log(dataForSend.toString());
+                                            log('sdfsdfds');
                                             state.data.isEmpty  
                                             ? showSnackBarOnTop(context,'Please add a card'.tr())
                                             : dataForSendBool 
-                                              ? context.navigation(context,SuccessPaymentScreen(data: dataForSend!,))
+                                              ? context.navigation(context,SuccessPaymentScreen(data: dataForSend ?? state.data[0],))
                                               : showSnackBarOnTop(context,'Please select a card'.tr());
                                             },
                                             marginFromTop: sizeH(context)*0.1,

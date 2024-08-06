@@ -19,7 +19,7 @@ class AuthRepoBody extends AuthRepoHead {
 
     try{
      final res= await account.create(userId: ID.unique(), email: email, password: password)
-          .then((value) async => account.createEmailSession(email: email, password: password));
+          .then((value) async => account.createEmailPasswordSession(email: email, password: password));
 
     final curretnUser = await account.get();
     await databases.createDocument(
@@ -40,7 +40,7 @@ class AuthRepoBody extends AuthRepoHead {
   @override
   Future<String> logIn(String email, String password) async {
     try{
-      await account.createEmailSession(email: email, password: password);
+      await account.createEmailPasswordSession(email: email, password: password);
       return  'OK';
     }
     on AppwriteException catch(e){print(e);return e.message!;}

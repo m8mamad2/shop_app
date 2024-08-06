@@ -16,7 +16,8 @@ import 'package:project3/src/view/main_screens/presentation/blocs/products_bloc/
 import 'global_state/bloc/global_bloc.dart';
 
 
-Widget MultiBlocProviderConfig(Widget child) => MultiBlocProvider(providers: [
+Widget MultiBlocProviderConfig(Widget child) => 
+MultiBlocProvider(providers: [
       BlocProvider<ThemeCubit>(create: (context) => locator(),),
       
       BlocProvider<AuthBloc>(create: (context) => locator(),),

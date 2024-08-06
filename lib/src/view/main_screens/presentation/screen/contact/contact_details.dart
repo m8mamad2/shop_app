@@ -104,9 +104,10 @@ class _ContactsDetailsState extends State<ContactsDetails> {
                             alignment: Alignment.bottomRight,
                             child: CircleAvatar(
                               radius: sizeW(context)*0.04,
+                              backgroundColor: Theme.of(context).primaryColor,
                               child: FittedBox(
                                 child: IconButton(
-                                  icon:const Icon(Icons.edit),
+                                  icon: Icon(Icons.edit,color: Theme.of(context).canvasColor,),
                                   onPressed: ()async{
                                     showModalBottomSheet(
                                       shape:const RoundedRectangleBorder(borderRadius: BorderRadius.only(
@@ -197,7 +198,7 @@ class _ContactsDetailsState extends State<ContactsDetails> {
                           backgroundColor: theme(context).primaryColor,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                         ),
-                      child: Text('update'.tr())),
+                      child: Text('update'.tr(),style: TextStyle(color: Theme.of(context).canvasColor),)),
                   ),
                 )
                     

@@ -23,7 +23,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: sizeW(context)*0.6,
-      color: theme(context).backgroundColor,
+      color: Colors.transparent,
       child: BlocBuilder<GlobalBloc,GlobalModel>(
           key: const ValueKey('drawer_key'),
           builder: (context, state) {

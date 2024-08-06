@@ -18,7 +18,7 @@ class OnBoardingBottomNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeCubit theme = BlocProvider.of<ThemeCubit>(context, listen: false);
+    ThemeCubit themeCubit = BlocProvider.of<ThemeCubit>(context, listen: false);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: sizeH(context) * 0.1,
@@ -30,7 +30,7 @@ class OnBoardingBottomNavbar extends StatelessWidget {
               count: 3,
               effect: JumpingDotEffect(
                   activeDotColor: Theme.of(context).primaryColor,
-                  dotColor: theme.isDark ? Colors.white24 : Colors.black26,
+                  dotColor: themeCubit.isDark ? Colors.white24 : Colors.black26,
                   dotWidth: 8,
                   dotHeight: 8,
                   spacing: 5,
@@ -39,6 +39,7 @@ class OnBoardingBottomNavbar extends StatelessWidget {
           isLastPage
               ? ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
                     minimumSize:Size(sizeW(context) * 0.35, sizeH(context) * 0.055),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -60,6 +61,7 @@ class OnBoardingBottomNavbar extends StatelessWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.linear),
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
                     minimumSize:Size(sizeW(context) * 0.25, sizeH(context) * 0.05),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),),
                   ),

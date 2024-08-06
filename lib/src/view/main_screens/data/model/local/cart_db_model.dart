@@ -11,7 +11,7 @@ class CartDBModel extends CartDBEntity {
   final int id;
 
   @HiveField(1)
-  final String title;
+  final String title; 
 
   @HiveField(2)
   final num price;

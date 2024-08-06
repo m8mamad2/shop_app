@@ -32,7 +32,7 @@ Widget drawerOneItmeWidget(BuildContext context, IconData icon, String title,dyn
                 style: theme(context).textTheme.titleLarge!.copyWith(fontSize: sizeW(context)*0.037,color: theme(context).backgroundColor),
               ),
               const Spacer(),
-              Icon(isEnglish(context) ? Icons.arrow_forward_ios_rounded : Icons.arrow_back_ios_new_rounded,size: sizeW(context)*0.05,color: theme(context).backgroundColor.withOpacity(0.4),)
+              Icon(isEnglish(context) ? Icons.arrow_forward_ios_rounded : Icons.arrow_back_ios_new_rounded,size: sizeW(context)*0.04,color: theme(context).backgroundColor.withOpacity(0.4),)
             ],
           ),
         ),

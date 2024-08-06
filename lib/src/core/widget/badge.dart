@@ -9,15 +9,15 @@ import 'package:project3/src/view/main_screens/presentation/screen/cart_screen.d
 
 import '../../view/main_screens/presentation/blocs/cart_db_bloc/cart_db_bloc.dart';
 
-class Badge extends StatefulWidget {
+class BadgeWidget extends StatefulWidget {
   final Color color;
-  const Badge({super.key,required this.color});
+  const BadgeWidget({super.key,required this.color});
 
   @override
-  State<Badge> createState() => _BadgeState();
+  State<BadgeWidget> createState() => _BadgeWidgetState();
 }
 
-class _BadgeState extends State<Badge> {
+class _BadgeWidgetState extends State<BadgeWidget> {
   @override
   void initState() {
     super.initState();
@@ -32,16 +32,16 @@ class _BadgeState extends State<Badge> {
           padding: EdgeInsets.only(bottom: sizeW(context)*0.01,left: sizeH(context)*0.005),
           child: Align(alignment: Alignment.bottomRight,
             child: CircleAvatar(
-              radius: 10,
+              radius: 11,
               backgroundColor: theme(context).primaryColor,
               child: BlocBuilder<CartDbBloc, CartDbState>(
                 builder: (context, state) {
                   if(state is LoadingCartDBState)return loading(context);
                   if(state is SuccessCartDBState){
                     int data  = state.data.length;
-                    return data == 0 ? const Text('0') : Text('$data');
+                    return data == 0 ? Text('0',style: testStyle,) : Text('$data',style: testStyle,);
                   }
-                  if(state is FailCartDBState)return const Text('0');
+                  if(state is FailCartDBState)return  Text('0',style: testStyle,);
                   return Container();
                 },
               ),
@@ -50,4 +50,6 @@ class _BadgeState extends State<Badge> {
       ],
 );
   }
+
+  TextStyle testStyle = const TextStyle(color: Colors.white);
 }

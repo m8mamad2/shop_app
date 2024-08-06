@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:project3/src/config/theme/theme.dart';
 import 'package:project3/src/core/extension/navigae_extension.dart';
 import 'package:project3/src/core/widget/bottom_navigatebar_widget.dart';
-import 'package:project3/src/view/main_screens/presentation/screen/cart_screen.dart';
 
 Widget detailsSeeCartWidget(BuildContext context, Color color) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),

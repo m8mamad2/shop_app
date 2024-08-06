@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -257,7 +259,7 @@ class _CategoryListProductsScreenState extends State<CategoryListProductsScreen>
                         icon: kArrowIcon(context,themeCubit.isDark ? theme(context).focusColor: theme(context).backgroundColor),
                         color: theme(context).backgroundColor,
                       ),
-                      Badge(color: themeCubit.isDark ? theme(context).focusColor: theme(context).backgroundColor,)
+                      BadgeWidget(color: themeCubit.isDark ? theme(context).focusColor: theme(context).backgroundColor,)
                     ],
                   ),
                   //! title
@@ -282,18 +284,9 @@ class _CategoryListProductsScreenState extends State<CategoryListProductsScreen>
                       width: sizeW(context) * 0.85,
                       height: sizeH(context)*0.056,
                       child: TypeAheadField<String>(
-                        noItemsFoundBuilder: (context) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 5),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              '😐 sorry... not Found'.tr(),
-                              style: theme(context).textTheme.titleMedium!.copyWith(color: theme(context).focusColor),
-                            ),
-                          ),
-                        ),
+                        controller: controller,
                         loadingBuilder: (context) =>loading(context),
-                        textFieldConfiguration: TextFieldConfiguration(
+                        builder:(context, controller, focusNode) => TextField(
                             controller: controller,
                             style: theme(context).textTheme.titleMedium!.copyWith(fontSize: 18,color: theme(context).focusColor),
                             decoration: InputDecoration(
@@ -303,15 +296,14 @@ class _CategoryListProductsScreenState extends State<CategoryListProductsScreen>
                                 hintStyle: theme(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(color: themeCubit.isDark ? theme(context).focusColor: theme(context).focusColor,fontSize: sizeW(context)*0.04),
+                                    .copyWith(color: themeCubit.isDark ? theme(context).focusColor: theme(context).focusColor,fontSize: sizeW(context)*0.034),
                                 hintText: 'Search'.tr(),
                                 icon: Padding(
                                   padding: EdgeInsets.only(left: isEnglish(context)? sizeW(context)*0.035:0 ,right: isEnglish(context)?0:sizeW(context)*0.035),
                                   child:const Icon(Icons.search),
                                 ))),
-                        suggestionsCallback: (pattern) async {
-                          return await getSuggestion(pattern);
-                        },
+                        
+                        suggestionsCallback: (pattern) async => await getSuggestion(pattern),
                         itemBuilder: (context, suggestion) {
                           return ListTile(
                             title: Padding(
@@ -323,19 +315,20 @@ class _CategoryListProductsScreenState extends State<CategoryListProductsScreen>
                             ),
                           );
                         },
-                        onSuggestionSelected: (suggestion) {
+                        onSelected: (suggestion) {
                           controller.text = suggestion;
                           ProductsEntity data = ulist!.firstWhere((element) => element.title == suggestion);
                           context.navigation(context, DetailsScreen(data: data));
                         },
-                        suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                            borderRadius: BorderRadius.circular(25)),
+                        // suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                        //     borderRadius: BorderRadius.circular(25)),
                       ),
                     ),
                   )
                 ]),
           ));
   }
+  
   
   Future<bool> willPop()async{
     BlocProvider.of<ProductsBloc>(context).add(ApiCallProductsEvent(endPoint: kproducts));
@@ -344,7 +337,7 @@ class _CategoryListProductsScreenState extends State<CategoryListProductsScreen>
 
   getSuggestion(String? query) {
     List<String> strings = ulist!.map((e) => e.title!).toList();
-    print(strings);
+    log('Get Search Data ----> $strings');
     List<String> matches = [];
     matches.addAll(strings);
     matches.retainWhere( (element) => element.toLowerCase().contains(query!.toLowerCase()));

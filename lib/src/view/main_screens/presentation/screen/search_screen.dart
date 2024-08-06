@@ -116,15 +116,15 @@ class _SearchScreenState extends State<SearchScreen> {
                             width: sizeW(context) * 0.828,
                             height: sizeH(context) * 0.06,
                             child: TypeAheadField<String>(
-                              noItemsFoundBuilder: (context) => Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Text(
-                                  'sorry... not Found!'.tr(),
-                                  style: theme(context).textTheme.titleMedium!.copyWith(color: theme(context).focusColor),
-                                ),
-                              ),
+                              // noItemsFoundBuilder: (context) => Padding(
+                              //   padding: const EdgeInsets.all(20.0),
+                              //   child: Text(
+                              //     'sorry... not Found!'.tr(),
+                              //     style: theme(context).textTheme.titleMedium!.copyWith(color: theme(context).focusColor),
+                              //   ),
+                              // ),
                               loadingBuilder: (context) => loading(context),
-                              textFieldConfiguration: TextFieldConfiguration(
+                              builder:(context, controller, focusNode) => TextField(
                                   controller: controller,
                                   style: theme(context).textTheme.titleMedium!.copyWith(color: theme(context).focusColor),
                                   decoration: InputDecoration(
@@ -155,15 +155,15 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                 );
                               },
-                              onSuggestionSelected: (suggestion) {
+
+                              onSelected: (suggestion) {
                                 controller.text = suggestion;
                                 ProductsEntity data = ulist!.firstWhere((element) => element.title == suggestion);
                                 context.navigation(context, DetailsScreen(data: data));
-                                // context.beamToNamed('/details',data:data);
                               },
-                              suggestionsBoxDecoration:
-                                  SuggestionsBoxDecoration(
-                                      borderRadius: BorderRadius.circular(25)),
+                              // suggestionsBoxDecoration:
+                              //     SuggestionsBoxDecoration(
+                              //         borderRadius: BorderRadius.circular(25)),
                             )),
                       )
                     

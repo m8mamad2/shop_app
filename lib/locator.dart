@@ -9,7 +9,6 @@ import 'package:project3/src/view/authenticaton_screen/domain/repo/auth_repo_hea
 import 'package:project3/src/view/authenticaton_screen/domain/usecase/auth_usecase.dart';
 import 'package:project3/src/view/authenticaton_screen/presentation/bloc/auth_bloc.dart';
 import 'package:project3/src/view/main_screens/data/data_source/remote/remote_data.dart';
-import 'package:project3/src/view/main_screens/data/model/backend_db_model.dart';
 import 'package:project3/src/view/main_screens/data/repo/backend/backend_db_helper_repo_body.dart';
 import 'package:project3/src/view/main_screens/data/repo/backend/backend_db_repo_body.dart';
 import 'package:project3/src/view/main_screens/data/repo/cart_db_repo_body.dart';
